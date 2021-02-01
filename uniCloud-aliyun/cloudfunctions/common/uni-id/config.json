@@ -1,0 +1,21 @@
+{
+	"passwordSecret": "bitter-husky-passwordSecret",
+	"tokenSecret": "bitter-husky-tokenSecret",
+	"tokenExpiresIn": 7200,
+	"tokenExpiresThreshold": 600,
+	"passwordErrorLimit": 6,
+	"bindTokenToDevice": true,
+	"passwordErrorRetryTime": 3600,
+	"autoSetInviteCode": false,
+	"forceInviteCode": false,
+	"mp-weixin": {
+		"oauth" : {
+			"weixin" : {
+				"appid" : "wx21661d87cdd45c05",
+				"appsecret" : "54cf575ad4c08ee4b3897f656cc8f77c"
+			}
+		}
+	},
+	"service": {
+	}
+}
