@@ -1,6 +1,6 @@
 <template>
 	<view class="">
-		
+		1
 	</view>
 </template>
 
