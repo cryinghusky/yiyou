@@ -1,23 +1,22 @@
 import Vue from 'vue'
 import App from './App'
-import store from './vuex/index'
-import '@/common/common'
+import store from './vuex/store.js'
+import util from './common/js/util.js'
+import filter from './common/filter/filter'
+import mixin from './common/mixin/mixin'
+import uView from 'uview-ui'
 
-import publicFn from './common/util.js'
+
+Vue.prototype.$store = store
+Vue.prototype.$util= util
+
+Vue.mixin(mixin)
+Vue.use(uView)
 
 Vue.config.productionTip = false
-
-Vue.prototype.$publicFn= publicFn
-
 App.mpType = 'app'
 
-// 引入全局uView
-import uView from 'uview-ui'
-Vue.use(uView);
-
 const app = new Vue({
-	...App,
-	store
+	...App
 })
 app.$mount()
-export default app

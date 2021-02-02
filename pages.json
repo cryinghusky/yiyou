@@ -40,9 +40,9 @@
 		}
 	],
 	"preloadRule": {
-		"pages/example/components": {
+		"pages/tabbar/index": {
 			"network": "all",
-			"packages": ["pages/componentsA", "pages/componentsB", "pages/componentsC"]
+			"packages": ["pages/shop"]
 		}
 	},
 	"globalStyle": {
