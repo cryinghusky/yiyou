@@ -1,6 +1,6 @@
 {
-	"passwordSecret": "bitter-husky-passwordSecret",
-	"tokenSecret": "bitter-husky-tokenSecret",
+	"passwordSecret": "crying-husky-passwordSecret",
+	"tokenSecret": "crying-husky-tokenSecret",
 	"tokenExpiresIn": 7200,
 	"tokenExpiresThreshold": 600,
 	"passwordErrorLimit": 6,

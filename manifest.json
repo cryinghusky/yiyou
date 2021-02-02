@@ -92,11 +92,7 @@
             "enable" : false
         },
         "sdkConfigs" : {
-            "maps" : {
-                "qqmap" : {
-                    "key" : "BWTBZ-NEOK2-253UW-CSLW7-D2F6O-3JBWX"
-                }
-            }
+            "maps" : {}
         }
     },
     "uniStatistics" : {
