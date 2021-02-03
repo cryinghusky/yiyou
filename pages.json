@@ -46,9 +46,9 @@
 		}
 	},
 	"globalStyle": {
-		"navigationBarTextStyle": "white",
-		"navigationBarTitleText": "哭兮兮的二哈",
-		"navigationBarBackgroundColor": "#EF3D22",
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "宜友",
+		"navigationBarBackgroundColor": "#FFFFFF",
 		"backgroundColor": "#FFFFFF"
 	},
 	"tabBar": {

@@ -6,36 +6,38 @@ module.exports = class UserService extends Service {
 	async login({
 		code
 	}) {
-		const res = await uniID.code2SessionWeixin({
+		const res = await uniID.loginByWeixin({
 			code: code
 		})
-		// if (res.code) {
-		// 	return res
-		// }
-		await this.checkToken(res.token, {
-			needPermission: true,
-			needUserInfo: false
+		return res
+	}
+	//更新用户数据
+	async updateUser(token,UpdateUserParams) {
+		const payload = await uniID.checkToken(token);
+		if (payload.code) {
+			return payload;
+		}
+		const res = await uniID.updateUser({
+		    uid: payload.uid,
+		    ...UpdateUserParams
 		})
-		// if (this.ctx.auth.role.includes('admin')) {
-		// 	return res
-		// }
-		// const navMenu = await this.service.menu.getMenu()
-		// if (navMenu.length) {
-		// 	return res
-		// }
-		// return {
-		// 	code: 10001,
-		// 	message: '该账号暂无权限登录'
-		// }
+		return res
 	}
-
-	async logout(token) {
-		return await uniID.logout(token)
+	
+	//获取用户数据
+	async getUserInfo(token){
+		await this.checkToken(token);
+		const res = await uniID.getUserInfo({
+		    uid: this.ctx.auth.uid
+		})
+		return res;
 	}
-
-	async checkToken(token) {
+	
+	//验证Token
+	async checkToken(token){
+		// token = '11222';
 		const auth = await uniID.checkToken(token, {
-			needPermission: true,
+			needPermission: false,
 			needUserInfo: false
 		})
 		if (auth.code) {
@@ -43,22 +45,5 @@ module.exports = class UserService extends Service {
 			this.ctx.throw('TOKEN_INVALID', `${auth.message}，${auth.code}`)
 		}
 		this.ctx.auth = auth // 设置当前请求的 auth 对象
-	}
-
-	async hasAdmin() {
-		const {
-			total
-		} = await this.db.collection('uni-id-users').where({
-			role: 'admin'
-		}).count()
-
-		return !!total
-	}
-
-	async getCurrentUserInfo(field = []) {
-		return uniID.getUserInfo({
-			uid: this.ctx.auth.uid,
-			field
-		})
 	}
 }

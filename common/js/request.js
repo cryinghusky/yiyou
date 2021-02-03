@@ -18,6 +18,10 @@ export const request = (action, data={}, ext={})=>{
 			}
 		}
 		
+		if (uni.getStorageSync('storage_key')) {
+			data.token = uni.getStorageSync('storage_key');
+		}
+		
 		uniCloud.callFunction({
 			name: 'ch-uniapp',
 			data: {

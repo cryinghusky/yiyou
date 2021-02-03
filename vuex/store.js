@@ -49,18 +49,16 @@ const store = new Vuex.Store({
 	},
 	actions: {
 		//更新用户信息
-		// async getUserInfo({state, commit}){
-		// 	const res = await request('user', 'get', {}, {
-		// 		checkAuthInvalid: false
-		// 	});
-		// 	if(res.status === 1){
-		// 		const userInfo = res.data;
-		// 		commit('setStateAttr', {
-		// 			key: 'userInfo',
-		// 			val: userInfo
-		// 		})
-		// 	}
-		// }
+		async getUserInfo({state, commit}){
+			if (uni.getStorageSync('storage_key')) {
+				const res = await request('user/getUserInfo', {});
+				const userInfo = res.userInfo;
+				commit('setStateAttr', {
+					key: 'userInfo',
+					val: userInfo
+				})
+			}
+		}
 	}
 }) 
 

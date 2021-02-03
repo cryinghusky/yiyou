@@ -3,6 +3,8 @@
 export default {
 	onLaunch: function() {
 		console.log('App Launch')
+		//获取用户数据
+		this.$store.dispatch('getUserInfo');
 	},
 	onShow: function(res) {
 		console.log('App Show')

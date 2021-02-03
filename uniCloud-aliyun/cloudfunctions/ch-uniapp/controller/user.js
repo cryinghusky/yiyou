@@ -3,6 +3,7 @@ const {
 } = require('uni-cloud-router')
 const uniID = require('uni-id')
 module.exports = class UserController extends Controller {
+	//登陆
 	async login() {
 		const {
 			code
@@ -12,27 +13,26 @@ module.exports = class UserController extends Controller {
 			code
 		})
 	}
-
-	async register() {
+	
+	//修改用户信息
+	async updateUser() {
 		const {
-			username,
-			password
+			infoRes,
+			token
 		} = this.ctx.data
-		const admin = await this.service.user.hasAdmin()
-		if (admin) {
-			return {
-				code: 10001,
-				message: '超级管理员已存在，请登录...'
-			}
+		let UpdateUserParams = {
+			nickname:infoRes.userInfo.nickName,
+			gender:infoRes.userInfo.gender,
+			avatar:infoRes.userInfo.avatarUrl
 		}
-		return uniID.register({
-			username,
-			password,
-			role: ["admin"]
-		})
+		return this.service.user.updateUser(token,UpdateUserParams)
 	}
-
-	async logout() {
-		return this.service.user.logout(this.ctx.event.uniIdToken)
+	
+	//获取用户数据
+	getUserInfo(){
+		const {
+			token
+		} = this.ctx.data
+		return this.service.user.getUserInfo(token)
 	}
 }
