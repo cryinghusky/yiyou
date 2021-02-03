@@ -51,8 +51,7 @@ export default{
 		},
 		/**
 		 * $request云函数请求
-		 * @param {String} module
-		 * @param {String} operation
+		 * @param {String} action
 		 * @param {Boolean} data 请求参数
 		 * @param {Boolean} ext 附加参数
 		 * @param {Boolean} ext.showLoading 是否显示loading状态，默认不显示
@@ -60,7 +59,7 @@ export default{
 		 * @param {Boolean} ext.login 未登录拦截
 		 * @param {Boolean} ext.setLoaded 加载完成是设置页面加载完毕
 		 */
-		$request(module, operation, data={}, ext={}){
+		$request(action, data={}, ext={}){
 			if(ext.login && !this.$util.isLogin()){
 				return;
 			}
@@ -68,7 +67,7 @@ export default{
 				this.isLoading = true;
 			}
 			return new Promise((resolve, reject)=> {
-				request(module, operation, data, ext).then(result => {
+				request(action, data, ext).then(result => {
 					if(ext.hideLoading !== false){
 						this.isLoading = false;
 					}

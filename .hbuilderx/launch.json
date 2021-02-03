@@ -6,6 +6,10 @@
      	{
      		"launchtype" : "remote"
      	},
+     	"h5" : 
+     	{
+     		"launchtype" : "local"
+     	},
      	"mp-weixin" : 
      	{
      		"launchtype" : "local"

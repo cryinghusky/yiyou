@@ -35,5 +35,4 @@ module.exports = class UserController extends Controller {
 	async logout() {
 		return this.service.user.logout(this.ctx.event.uniIdToken)
 	}
-
 }

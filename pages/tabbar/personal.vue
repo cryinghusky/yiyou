@@ -1,6 +1,6 @@
 <template>
 	<view>
-		
+		<button type="default" @click="login">登陆</button>
 	</view>
 </template>
 
@@ -12,8 +12,7 @@
 			};
 		},
 		onLoad() {
-			//触发登陆
-			this.login();
+			
 		},
 		methods: {
 			//登录

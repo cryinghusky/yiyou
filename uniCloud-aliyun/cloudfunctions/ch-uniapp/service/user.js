@@ -9,14 +9,13 @@ module.exports = class UserService extends Service {
 		const res = await uniID.code2SessionWeixin({
 			code: code
 		})
-		return res
 		// if (res.code) {
 		// 	return res
 		// }
-		// await this.checkToken(res.token, {
-		// 	needPermission: true,
-		// 	needUserInfo: false
-		// })
+		await this.checkToken(res.token, {
+			needPermission: true,
+			needUserInfo: false
+		})
 		// if (this.ctx.auth.role.includes('admin')) {
 		// 	return res
 		// }

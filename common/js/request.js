@@ -3,25 +3,25 @@ import cache from './cache'
 import { msg } from './util'
 
 /**
- * @param {String} module  
+ * @param {String} action  
  * @param {Object} data 请求参数
  * @param {Object} ext 附加参数
  * @param {Number} ext.cache 数据缓存时间，秒
  */
-export const request = (module, data={}, ext={})=>{
+export const request = (action, data={}, ext={})=>{
 	return new Promise((resolve, reject) => {
-		const cloudFnName = module || 'mix-uniapp';
 		if(ext.cache > 0){
-			const cacheResult = cache.get(cloudFnName + '-' + module);
+			const cacheResult = cache.get('ch-uniapp-' + action);
 			if(cacheResult !== false && cacheResult.status !== 0){
 				resolve(cacheResult);
 				return;
 			}
 		}
+		
 		uniCloud.callFunction({
 			name: 'ch-uniapp',
 			data: {
-				module,
+				action,
 				data
 			}
 		}).then(res=>{
@@ -54,7 +54,7 @@ export const request = (module, data={}, ext={})=>{
 				}
 			}
 			if(ext.cache > 0){
-				cache.put(cloudFnName + '-' + module+ '-', res.result, ext.cache);
+				cache.put('ch-uniapp-' + action, res.result, ext.cache);
 			}
 			resolve(res.result);
 		}).catch((err) => {
