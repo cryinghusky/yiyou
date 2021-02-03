@@ -5,7 +5,7 @@
 	"pages": [{
 			"path": "pages/tabbar/index",
 			"style": {
-				"navigationBarTitleText": "首页"
+				"navigationBarTitleText": "拍照识别垃圾分类"
 			}
 		},
 		{
@@ -61,11 +61,6 @@
 			"iconPath": "static/tabBar/shouye1.png",
 			"selectedIconPath": "static/tabBar/shouye2.png",
 			"text": "首页"
-		}, {
-			"pagePath": "pages/tabbar/recommend",
-			"iconPath": "static/tabBar/fenlei1.png",
-			"selectedIconPath": "static/tabBar/fenlei2.png",
-			"text": "推荐"
 		}, {
 			"pagePath": "pages/tabbar/share",
 			"iconPath": "static/tabBar/gouwuche1.png",
