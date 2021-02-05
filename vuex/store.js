@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import {request} from '@/common/js/request'
+import {msg} from '@/common/js/util'
 
 Vue.use(Vuex)
 
@@ -52,6 +53,10 @@ const store = new Vuex.Store({
 		async getUserInfo({state, commit}){
 			if (uni.getStorageSync('storage_key')) {
 				const res = await request('user/getUserInfo', {});
+				if (res.code) {
+					uni.setStorageSync('storage_key','')
+					return;
+				}
 				const userInfo = res.userInfo;
 				commit('setStateAttr', {
 					key: 'userInfo',

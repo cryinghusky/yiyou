@@ -28,7 +28,14 @@
 			};
 		},
 		onLoad() {
-			this.login();
+			
+		},
+		onShow() {
+			if (uni.getStorageSync('storage_key')) {
+				this.getUserInfo();
+			}else{
+				this.login();
+			}
 		},
 		computed: {
 			userInfo(){

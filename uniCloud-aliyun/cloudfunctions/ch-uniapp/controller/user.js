@@ -35,4 +35,5 @@ module.exports = class UserController extends Controller {
 		} = this.ctx.data
 		return this.service.user.getUserInfo(token)
 	}
+
 }

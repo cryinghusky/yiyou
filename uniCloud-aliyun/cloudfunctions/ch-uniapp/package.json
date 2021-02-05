@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "request-promise": "^4.2.6",
     "uni-cloud-router": "file:../common/uni-cloud-router",
     "uni-id": "file:../common/uni-id"
   }

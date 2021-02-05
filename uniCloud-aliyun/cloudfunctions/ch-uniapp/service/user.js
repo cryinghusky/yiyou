@@ -2,6 +2,7 @@ const {
 	Service
 } = require('uni-cloud-router')
 const uniID = require('uni-id')
+const { signMD5 } = require('./util')
 module.exports = class UserService extends Service {
 	async login({
 		code

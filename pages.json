@@ -5,7 +5,7 @@
 	"pages": [{
 			"path": "pages/tabbar/index",
 			"style": {
-				"navigationBarTitleText": "拍照识别垃圾分类"
+				"navigationBarTitleText": "首页"
 			}
 		},
 		{
