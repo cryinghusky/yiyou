@@ -1,22 +1,11 @@
 <template>
-	<view>
-		<view class="">
-			
-		</view>
-		<u-navbar :is-back="false" :is-fixed="true" :border-bottom='false' :background='navbarBackground' :immersive='true'>
-			<view class="slot-wrap">
-				<view class="sticky-box-search" @click="navToPage(`/pages/index/search`)">
-					<u-search 
-						bg-color='#FFFFFF' 
-						search-icon-color='#EF761A' 
-						:show-action='false' 
-						height='72'>
-					</u-search>
-				</view>
+	<view class="">
+		<view class="u-status-bar" :style="{ height: statusBarHeight + 'px' }"></view>
+		<view class="w100 flex justify-center" :style="[navbarInnerStyle]">
+			<view class="p24">
+				释放刷新
 			</view>
-		</u-navbar>
-		<topNavbar/>
-		<button class="bottom" @click="getJDGoods()">获取京东数据</button>
+		</view>
 	</view>
 </template>
 
@@ -28,32 +17,14 @@
 	menuButtonInfo = uni.getMenuButtonBoundingClientRect();
 	// #endif
 	export default {
-		onPullDownRefresh() {
-			setTimeout(() =>{
-				uni.stopPullDownRefresh();
-			},500)
-		},
+		
 		data() {
 			return {
-				navbarBackground: {
-					// backgroundColor: '#001f3f',
-					// 导航栏背景图
-					// background: 'url(https://cdn.uviewui.com/uview/swiper/1.jpg) no-repeat',
-					// 还可以设置背景图size属性
-					// backgroundSize: 'cover',
-					// 渐变色
-					backgroundImage: 'linear-gradient(45deg, #EF3D22, #FE6835)'
-				},
+				menuButtonInfo: menuButtonInfo,
 				statusBarHeight: systemInfo.statusBarHeight
 			};
 		},
-		methods:{
-			//获取数据
-			getJDGoods(){
-				this.$request('jd/jingfenQuery', {}).then(res => {
-					console.log(res);
-				})
-			},
+		computed:{
 			// 导航栏内部盒子的样式
 			navbarInnerStyle() {
 				let style = {};
@@ -64,6 +35,7 @@
 				let rightButtonWidth = systemInfo.windowWidth - menuButtonInfo.left;
 				style.marginRight = rightButtonWidth + 'px';
 				// #endif
+				console.log(style);
 				return style;
 			},
 			// 转换字符数值为真正的数值
@@ -84,34 +56,5 @@
 </script>
 
 <style lang="scss">
-	//顶部导航栏
-	.slot-wrap {
-		display: flex;
-		align-items: center;
-		flex: 1;
-
-		.search-wrap {
-			margin: 0 20rpx;
-			flex: 1;
-		}
-	}
-	.sticky-box-search {
-		padding: 0 24rpx;
-		flex: 1;
-	}
 	
-	.sticky-box-img {
-		width: 114rpx;
-		height: 56rpx;
-		margin: 0 12rpx 0 24rpx;
-	}
-	.swiper-box {
-		width: 702rpx;
-		margin: 24rpx 24rpx 8rpx;
-	
-		.swiper-box-img {
-			width: 32rpx;
-			height: 32rpx;
-		}
-	}
 </style>
